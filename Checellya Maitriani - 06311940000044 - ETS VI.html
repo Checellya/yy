@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <title>Checellya Maitriani - 06311940000044</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<!-- Write your comments here -->
+
+<body>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        // Change paragraph:
+        const labels = [
+            'United State of Amerika',
+            'Russian Federation ',
+            'Japan ',
+            'Republic of Korea ',
+            'Germany ',
+            'Ukraine ',
+            'France ',
+            'Brazil ',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Rata-rata Kasus Bunuh Diri Wanita',
+                backgroundColor: 'rgb(255, 204, 221)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [
+                    1269.84375,
+                    1381.52083333333,
+                    1148.69791666667,
+                    654.552083333333,
+                    445.604166666667,
+                    304.811111111111,
+                    451.311111111111,
+                    317.4375,
+                ],
+            }, {
+                label: 'Rata-rata Kasus Bunuh Diri Pria ',
+                backgroundColor: 'rgb(230,255,230)',
+                borderColor: 'rgb(77,255,77)',
+                data: [
+                    4725.09375,
+                    3411.23958333333,
+                    5611.98958333333,
+                    1375.10416666667,
+                    1265.63541666667,
+                    1430.74444444444,
+                    1268.04444444444,
+                    1186.61458333333,
+                ],
+            }
+            ]
+        };
+
+        const config = {
+            type: 'radar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                        title: {
+                        display: true,
+                        text: '7 Negara Rata-Rata Kasus Bunuh Diri Tertinggi Periode 2010-2016'
+                    },
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: 'rgb(230, 191, 0)'
+                        }
+                    }
+                },
+                animations: {
+                    y: {
+                        easing: 'easeInOutElastic',
+                        from: (ctx) => {
+                            if (ctx.type === 'data') {
+                                if (ctx.mode === 'default' && !ctx.dropped) {
+                                    ctx.dropped = true;
+                                    return 0;
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+        };
+    </script>
+
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+
+</body>
+
+</html>
